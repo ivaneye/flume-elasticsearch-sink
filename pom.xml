@@ -25,7 +25,7 @@
     <version>2.0.0</version>
 
     <properties>
-        <elasticsearch-verison>6.5.4</elasticsearch-verison>
+        <elasticsearch-verison>6.4.3</elasticsearch-verison>
         <flume-version>1.8.0</flume-version>
         <log4j-version>2.11.0</log4j-version>
         <junit-version>4.10</junit-version>
