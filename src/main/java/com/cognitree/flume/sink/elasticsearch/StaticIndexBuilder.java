@@ -15,10 +15,14 @@
  */
 package com.cognitree.flume.sink.elasticsearch;
 
+import com.google.common.base.Charsets;
+import com.google.gson.Gson;
 import org.apache.flume.Context;
 import org.apache.flume.Event;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Map;
 
 import static com.cognitree.flume.sink.elasticsearch.Constants.*;
 
@@ -34,6 +38,8 @@ public class StaticIndexBuilder implements IndexBuilder {
     private String type;
 
     private String id;
+
+    private Gson gson = new Gson();
 
     @Override
     public String getIndex(Event event) {
@@ -59,8 +65,13 @@ public class StaticIndexBuilder implements IndexBuilder {
 
     @Override
     public String getId(Event event) {
+        // 判断event中是否有配置的id的值，如果有就作为主键
         if (this.id != null) {
-            return this.id;
+            String str = new String(event.getBody(), Charsets.UTF_8);
+            Map map = gson.fromJson(str, Map.class);
+            if (map.get(this.id) != null) {
+                return map.get(this.id) + "";
+            }
         }
         return null;
     }
