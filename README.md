@@ -25,7 +25,7 @@ Required properties are in bold.
 | **channel**                                | -              |                                                                                               |
 | **type**                                   | -              | The component type name, has to be com.cognitree.flume.sink.elasticsearch.ElasticSearchSink   |
 | **es.cluster.name**                        | elasticsearch  | Name of the elasticsearch cluster to connect to                                               |
-| **es.client.hosts**                        | -              | Comma separated hostname:port pairs ex: host1:9300,host2:9300. The default port is 9300       |
+| **es.client.hosts**                        | -              | Comma separated hostname:port pairs ex: host1:9200,host2:9200. The default port is 9200。基于HTTP       |
 | es.bulkActions                             | 1000           | The number of actions to batch into a request                                                 |
 | es.bulkProcessor.name                      | flume          | Name of the bulk processor                                                                    |
 | es.bulkSize                                | 5              | Flush the bulk request every mentioned size                                                   |
@@ -57,7 +57,7 @@ Example of agent named agent
   agent.sinks.es_sink.es.backoff.policy.time.interval=50M
   agent.sinks.es_sink.es.backoff.policy.retries=8
   agent.sinks.es_sink.es.cluster.name=es-cluster
-  agent.sinks.es_sink.es.client.hosts=127.0.0.1:9300
+  agent.sinks.es_sink.es.client.hosts=127.0.0.1:9200
   agent.sinks.es_sink.es.index=defaultindex
   agent.sinks.es_sink.es.index.builder=com.cognitree.flume.sink.elasticsearch.HeaderBasedIndexBuilder
   agent.sinks.es_sink.es.serializer=com.cognitree.flume.sink.elasticsearch.SimpleSerializer

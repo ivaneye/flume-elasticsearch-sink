@@ -98,7 +98,7 @@ public class ElasticSearchSink extends AbstractSink implements Configurable {
             if (event != null) {
                 String body = new String(event.getBody(), Charsets.UTF_8);
                 if (!Strings.isNullOrEmpty(body)) {
-                    logger.debug("start to sink event [{}].", body);
+                    logger.info("start to sink event [{}].", body);
                     String index = indexBuilder.getIndex(event);
                     String type = indexBuilder.getType(event);
                     String id = indexBuilder.getId(event);
@@ -116,7 +116,7 @@ public class ElasticSearchSink extends AbstractSink implements Configurable {
                                 new Object[]{body, index, type, id});
                     }
                 }
-                logger.debug("sink event [{}] successfully.", body);
+                logger.info("sink event [{}] successfully.", body);
             }
             txn.commit();
             return Status.READY;
