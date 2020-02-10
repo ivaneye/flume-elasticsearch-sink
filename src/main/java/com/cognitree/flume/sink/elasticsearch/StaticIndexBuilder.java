@@ -70,8 +70,8 @@ public class StaticIndexBuilder implements IndexBuilder {
         this.index = Util.getContextValue(context, ES_INDEX);
         this.type = Util.getContextValue(context, ES_TYPE);
         this.id = Util.getContextValue(context, ES_ID);
-        logger.info("Simple Index builder, name [{}] type [{}] ",
-                new Object[]{this.index, this.type});
+        logger.info("Simple Index builder, name [{}] type [{}] id [{}] ",
+                new Object[]{this.index, this.type, this.id});
 
     }
 }
