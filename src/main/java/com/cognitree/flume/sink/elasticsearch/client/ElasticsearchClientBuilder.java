@@ -50,7 +50,7 @@ public class ElasticsearchClientBuilder {
         RestHighLevelClient client;
         HttpHost[] hosts = new HttpHost[transportAddresses.size()];
         int i = 0;
-        logger.trace("Cluster Name: [{}], HostName: [{}] ",
+        logger.info("Cluster Name: [{}], HostName: [{}] ",
                 new Object[]{clusterName, transportAddresses});
         for (TransportAddress transportAddress : transportAddresses) {
             hosts[i++] = new HttpHost(transportAddress.address().getAddress(),
