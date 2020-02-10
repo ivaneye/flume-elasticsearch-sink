@@ -47,6 +47,7 @@ public class SynapseSerializer implements Serializer {
                 map.put("_id", recId);
                 str = gson.toJson(map);
             }
+            logger.info("dataJson = [{}]", str);
             XContentParser parser = XContentFactory
                     .xContent(XContentType.JSON)
                     .createParser(NamedXContentRegistry.EMPTY,
