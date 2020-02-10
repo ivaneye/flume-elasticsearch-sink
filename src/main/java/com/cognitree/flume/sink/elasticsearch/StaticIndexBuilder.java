@@ -33,6 +33,8 @@ public class StaticIndexBuilder implements IndexBuilder {
 
     private String type;
 
+    private String id;
+
     @Override
     public String getIndex(Event event) {
         String index;
@@ -57,6 +59,9 @@ public class StaticIndexBuilder implements IndexBuilder {
 
     @Override
     public String getId(Event event) {
+        if (this.id != null) {
+            return this.id;
+        }
         return null;
     }
 
@@ -64,6 +69,7 @@ public class StaticIndexBuilder implements IndexBuilder {
     public void configure(Context context) {
         this.index = Util.getContextValue(context, ES_INDEX);
         this.type = Util.getContextValue(context, ES_TYPE);
+        this.id = Util.getContextValue(context, ES_ID);
         logger.info("Simple Index builder, name [{}] type [{}] ",
                 new Object[]{this.index, this.type});
 
